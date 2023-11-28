@@ -23,3 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+document.querySelectorAll('.box-icon').forEach(item => {
+    item.addEventListener('mouseover', () => {
+        item.src = 'img/open_box.png';
+    });
+    item.addEventListener('mouseout', () => {
+        item.src = 'img/closed_box.png';
+    });
+});

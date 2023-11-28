@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <!-- Company Logo -->
+        <a href="index.html" class="navbar-logo">
+            <img src="img/logo.jpeg" alt="Company Logo">
+        </a>
+    
+        <!-- Placeholder for balancing the layout -->
+        <div class="burger-menu-placeholder"></div>
+        
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+        
+        <div class="menu-panel" id="menuPanel">
+            <div class="menu-links">
+                <a href="about.html">About us</a>
+                <a href="ingredients.html#vegan-options">Vegan options</a>
+                <a href="ingredients.html#herbivore-options">Herbivore options</a>
+                <a href="ingredients.html#carnivore-options">Carnivore options</a>
+                <a href="ingredients.html#omnivore-options">Omnivore options</a>
+                <a href="merch.html">Merch</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="about-section">
+          <h1>About us</h1>
+          <p>
+            Lorem ipsum dolor
+          </p>
+        </div>
+        
+        <div class="goals-section">
+          <h1>Our Goal</h1>
+          <p>
+            Lorem ipsum dolor
+          </p>
+        </div>      
+  
+        <div class="team-section">
+          <h1 style="margin-bottom: 50px;">Our Team</h1>
+          <div class="team-members">
+            <div class="team-member">
+              <div class="profile-pic">
+                <img src="img/Aboutus/Samuel.png" alt="John">
+              </div>
+              <h3>John Doe</h3>
+              <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+              <div class="profile-pic">
+                <img src="img/Aboutus/nat.png" alt="Jane">
+              </div>
+              <h3>Jane Doe</h3>
+              <p>Marketing & Social Media</p>
+            </div>
+            <div class="team-member">
+              <div class="profile-pic">
+                <img src="img/Aboutus/alex.png" alt="Alex">
+              </div>
+              <h3>Alex Dyer</h3>
+              <p>Advisor</p>
+            </div>
+            <div class="team-member">
+              <div class="profile-pic">
+                <img src="img/Aboutus/Awande.png" alt="Sam">
+              </div>
+              <h3>Sam Winchester</h3>
+              <p>Partnership manager</p>
+            </div>
+          </div>
+        </div>      
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
