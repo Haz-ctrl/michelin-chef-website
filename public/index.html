@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Home</title>
+    <title>Suspect Meals</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
 </head>
 <body>
+    <div id="loadingOverlay">
+        <img src="img/logo.png" alt="Company Logo" id="overlayLogo">
+    </div>
 
     <nav class="navbar">
+        <!-- Company Logo -->
+        <a href="index.html" class="navbar-logo">
+            <img src="img/logo.png" alt="Company Logo">
+        </a>
+    
+        <!-- Links for desktop -->
+        <div class="menu-links-desktop">
+            <a href="#">Products</a>
+            <a href="about.html">About us</a>
+            <a href="merch.html">Merch</a>
+        </div>
+    
+        <!-- Burger Menu for mobile -->
         <div class="burger-menu" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        
-        <!-- Company Logo -->
-        <a href="index.html" class="navbar-logo">
-            <img src="img/logo.jpeg" alt="Company Logo">
-        </a>
     
-        <!-- Placeholder for balancing the layout -->
-        <div class="burger-menu-placeholder"></div>
-        
         <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
         
         <div class="menu-panel" id="menuPanel">
+            <!-- Links for mobile -->
             <div class="menu-links">
+                <a href="#">Products</a>
                 <a href="about.html">About us</a>
-                <a href="ingredients.html#vegan-options">Vegan options</a>
-                <a href="ingredients.html#herbivore-options">Herbivore options</a>
-                <a href="ingredients.html#carnivore-options">Carnivore options</a>
-                <a href="ingredients.html#omnivore-options">Omnivore options</a>
                 <a href="merch.html">Merch</a>
             </div>
         </div>
-    </nav>
+    </nav>  
 
     <main>
 
@@ -48,99 +55,51 @@
             </div>
         </section>        
 
-        <section class="categories-section">
-            <div class="category">
-                <h2>Vegan</h2>
-                    <div class="meals-container">
-                        <!-- Placeholder images for Vegan category -->
-                        <div class="meal">
-                            <a href="ingredients.html#vegan-meal-1">
-                                <img src="img/closed_box.png" alt="Vegan Meal 1" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#vegan-meal-2">
-                                <img src="img/closed_box.png" alt="Vegan Meal 2" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#vegan-meal-3">
-                                <img src="img/closed_box.png" alt="Vegan Meal 3" class="box-icon">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Add more meals as needed -->
-            </div>
-    
-            <div class="category">
-                <h2>Herbivore</h2>
-                    <!-- Placeholder images for Herbivore category -->
-                    <div class="meals-container">
-                        <div class="meal">
-                            <a href="ingredients.html#herbivore-meal-1">
-                                <img src="img/closed_box.png" alt="Herbivore Meal 1" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#herbivore-meal-2">
-                                <img src="img/closed_box.png" alt="Herbivore Meal 2" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#herbivore-meal-3">
-                                <img src="img/closed_box.png" alt="Herbivore Meal 3" class="box-icon">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Add more meals as needed -->
-            </div>
-    
-            <div class="category">
-                <h2>Carnivore</h2>
-                    <!-- Placeholder images for Carnivore category -->
-                    <div class="meals-container">
-                        <div class="meal">
-                            <a href="ingredients.html#carnivore-meal-1">
-                                <img src="img/closed_box.png" alt="Carnivore Meal 1" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#carnivore-meal-2">
-                                <img src="img/closed_box.png" alt="Carnivore Meal 2" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#carnivore-meal-3">
-                                <img src="img/closed_box.png" alt="Carnivore Meal 3" class="box-icon">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Add more meals as needed -->
-            </div>
-    
-            <div class="category">
-                <h2>Omnivore</h2>
-                    <!-- Placeholder images for Omnivore category -->
-                    <div class="meals-container">
-                        <div class="meal">
-                            <a href="ingredients.html#omnivore-meal-1">
-                                <img src="img/closed_box.png" alt="Omnivore Meal 1" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#omnivore-meal-2">
-                                <img src="img/closed_box.png" alt="Omnivore Meal 2" class="box-icon">
-                            </a>
-                        </div>
-                        <div class="meal">
-                            <a href="ingredients.html#omnivore-meal-3">
-                                <img src="img/closed_box.png" alt="Omnivore Meal 3" class="box-icon">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Add more meals as needed -->
+        <section id="category-section">
+            <h2>Categories</h2>
+            <div class="categories">
+                <div class="category-item">
+                    <img src="img/vegan.png" alt="Vegan">
+                    <h3>For The Vegan</h3>
+                </div>
+                <div class="category-item">
+                    <img src="img/herbivore.png" alt="Vegetarian">
+                    <h3>For The Vegetarian</h3>
+                </div>
+                <div class="category-item">
+                    <img src="img/omnivore.png" alt="Regular">
+                    <h3>For The Regular</h3>
+                </div>
             </div>
         </section>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="category-button" onclick="filterItems('all')">All</button>
+            <button class="category-button" onclick="filterItems('regular')">Regular</button>
+            <button class="category-button" onclick="filterItems('vegan')">Vegan</button>
+            <button class="category-button" onclick="filterItems('vegetarian')">Vegetarian</button>
+            <!-- Add more buttons for additional categories as needed -->
+        </div>
+
+        <!-- Items Container -->
+        <div class="items-container">
+            <!-- "Coming Soon" Item -->
+            <div class="item" id="coming-soon-item" onclick="showIngredients()">
+                <img src="path_to_coming_soon_image" alt="Coming Soon">
+                <h3>Coming Soon</h3>
+                <p>Click to see ingredients</p>
+            </div>
+
+            <!-- More items can be added here with corresponding category classes -->
+        </div>
+
+        <!-- Hidden ingredients box to be displayed on click -->
+        <div id="ingredients-box" style="display: none;">
+            <p>Ingredients: Coming Soon</p>
+        </div>
+      
+        
     </main>
 
     <script src="script.js"></script>

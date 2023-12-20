@@ -3,13 +3,34 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+/* || Overlay styles */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000; /* High z-index to stay on top */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    transition: top 0.5s ease; /* Transition for sliding up */
+}
+
+#overlayLogo {
+    max-width: 100%; /* Allow the logo to be as wide as the overlay */
+    max-height: 100%; /* Allow the logo to be as tall as the overlay */
+    object-fit: contain; /* Maintain aspect ratio without cropping */
+}
+
+/* || Navbar styles */
 nav {
-    position: relative;
-    background-color: #333;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #333;
+    padding: 10px;
 }
 
 .burger-menu {
@@ -52,20 +73,25 @@ nav {
 }
 
 .menu-panel {
-    display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 80%; /* Adjust the width as needed, but not more than 100% */
+    max-width: 300px; /* Maximum width to prevent it from being too wide */
+    height: 100%;
+    background-color: #333;
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
     z-index: 2;
-    text-align: center;
+    transition: left 0.3s; /* Smooth transition for sliding in and out */
+    overflow-y: auto; /* Allows scrolling if content is too long */
 }
 
 .menu-links {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Arrange links in a column */
+    align-items: center; /* Center align the links */
     justify-content: center;
+    padding: 20px 0; /* Add some padding at the top and bottom */
 }
 
 .menu-links a {
@@ -73,9 +99,29 @@ nav {
     color: #fff;
     padding: 10px;
     transition: background-color 0.3s;
+    width: 100%; /* Make links full width */
+    text-align: center; /* Center align the text */
 }
 
-.menu-links a:hover {
+/* Class to be added via JavaScript when the burger menu is clicked */
+.menu-panel.open {
+    left: 0; /* Slide in */
+}
+
+.menu-links-desktop {
+    display: none; /* Initially hidden, will be displayed on larger screens */
+    flex-grow: 1; /* Allow the links to grow and fill the space */
+    text-align: center; /* Center the links */
+}
+
+.menu-links-desktop a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.menu-links-desktop a:hover {
     background-color: #555;
 }
 
@@ -98,47 +144,119 @@ nav {
     display: block;
 }
 
-.categories-section {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.category {
+.category-filter {
     text-align: center;
-    width: 250px; /* Adjust the width as needed */
+    margin-bottom: 20px;
 }
 
-.category h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+.category-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    /* Additional styling as needed */
 }
 
-.meals-container {
+.items-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the meals horizontally */
+    justify-content: center;
+    gap: 20px; /* Spacing between items */
+    /* Additional styling as needed */
 }
 
-.meal {
-    width: 150px; /* Adjust the width as needed */
-    margin: 10px;
-    flex: 0 0 auto;
+#category-section {
+    text-align: center;
+    padding: 20px; /* Added padding to the entire section for spacing */
+    margin-bottom: 50px; /* Space below the section */
 }
 
-.meal img {
+.categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap for more space between categories */
+    margin-top: 20px; /* Space above the first row of categories */
+}
+
+.category-item {
+    flex-basis: calc(33.333% - 40px); /* Adjust width, subtracting the gap */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow */
+    border-radius: 8px; /* Optional: Rounds the corners */
+    overflow: hidden; /* Keeps child elements within the border-radius */
+    transition: transform 0.3s ease; /* Optional: Adds a transform effect on hover */
+    margin-bottom: 20px; /* Space below each category item */
+}
+
+.category-item img {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
+    display: block; /* Remove any space below the image */
+    border-bottom: 1px solid #ddd; /* Line between image and text for separation */
 }
 
-.meal:hover img {
-    transform: scale(1.1);
+.category-item h3 {
+    margin: 0;
+    padding: 15px; /* Increased padding for more space inside each category */
+    background-color: #f0f0f0; /* Adjust background color as needed */
+    font-size: 1.1em; /* Slightly larger text */
+}
+
+/* Hover effect */
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Slightly deeper shadow on hover */
+}
+
+#category-items {
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    /* Add additional styling for tabs */
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+}
+
+.item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#ingredients-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    text-align: left;
 }
 
 /* || About us page styles */
-
 .about-section,
 .goals-section,
 .team-section {
@@ -252,7 +370,26 @@ nav {
     font-size: 18px;
 }
 
+/* Media Query for Desktop Screens */
+@media screen and (min-width: 768px) {
+    .menu-links-desktop {
+        display: block; /* Show the links on desktop */
+    }
+
+    .burger-menu {
+        display: none; /* Hide burger menu on larger screens */
+    }
+
+    .menu-panel {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 768px) {
+    #overlayLogo {
+        max-width: 150px; /* Increased size of logo for mobile screens */
+    }
+
     nav {
         justify-content: center; /* Center elements in navbar */
     }
@@ -291,6 +428,14 @@ nav {
 
     .banner img {
         object-fit: cover;
+    }
+
+    .categories {
+        gap: 20px; /* Slightly reduce the gap on mobile for better fit */
+    }
+
+    .category-item {
+        flex-basis: 100%; /* Full width on mobile devices */
     }
 
     /* || About us responsive styles */
